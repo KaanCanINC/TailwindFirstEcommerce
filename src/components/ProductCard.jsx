@@ -5,7 +5,7 @@ export default function ProductCard({
   return (
     <div
       className="w-full border-2 p-3 m-3 hover:cursor-pointer 
-      hover:border-slate-100 md:w-1/4 
+      hover:border-slate-100 md:w-1/4 rounded
     lg:w-1/6"
     >
       <a className="block relative h-48 rounded overflow-hidden">
