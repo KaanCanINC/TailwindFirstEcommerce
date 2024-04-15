@@ -1,8 +1,8 @@
 import { MdDelete } from "react-icons/md";
 
-export default function CartItem({ product, onClick }) {
+export default function CartItemSlider({ product, onClick }) {
   return (
-    <div className="w-11/12 p-3 my-3 rounded hover:cursor-pointer bg-slate-300  flex flex-row justify-between mx-auto">
+    <div className="hidden sm:w-1/4 p-3 mx-1 my-3 rounded hover:cursor-pointer bg-slate-300 sm:flex flex-row justify-between">
       <a className="h-20 flex w-2/4 items-center">
         <img
           src={product.images[0]}

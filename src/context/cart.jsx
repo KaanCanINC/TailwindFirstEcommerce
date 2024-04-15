@@ -23,6 +23,19 @@ export const CartProvider = ({ children }) => {
       setCartItems([...cartItems, { ...item }]);
     }
   };
+
+  const deleteFromCart = (item) => {
+    const isItemInCart = cartItems.find((cartItem) => cartItem.id === item.id);
+
+    if (isItemInCart) {
+      setCartItems(cartItems.filter((cartItem) => cartItem.id !== item.id)); // if the quantity of the item is 1, remove the item from the cart
+    }
+  };
+
+  const getCartTotal = () => {
+    return cartItems.reduce((total, item) => total + item.price, 0);
+  };
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
@@ -34,7 +47,9 @@ export const CartProvider = ({ children }) => {
     }
   }, []);
   return (
-    <CartContext.Provider value={{ cartItems, addToCart }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, deleteFromCart, getCartTotal }}
+    >
       {children}
     </CartContext.Provider>
   );

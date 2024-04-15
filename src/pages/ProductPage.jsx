@@ -11,7 +11,7 @@ export async function loader() {
 
 function ProductPage() {
   const { productData } = useLoaderData();
-  const { cartItems, addToCart } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext);
 
   return (
     <section className="text-gray-600 body-font">
