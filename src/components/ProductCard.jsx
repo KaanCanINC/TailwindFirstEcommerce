@@ -11,21 +11,21 @@ export default function ProductCard({
       <a className="block relative h-48 rounded overflow-hidden">
         <img
           src={images[0]}
-          className="object-contain object-center w-full h-full block"
+          className="object-contain object-center w-full h-full"
           alt=""
         />
       </a>
       <div className="mt-4">
-        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1 uppercase">
+        <h3 className="text-gray-500 text-xs tracking-widest mb-1 uppercase">
           {category}
         </h3>
         <h1 className="text-gray-900 title-font text-lg font-medium line-clamp-2">
           {title}
         </h1>
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex md:flex-row justify-between items-center">
           <p className="font-bold text-xl text-black">${price}</p>
           <button
-            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2"
+            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2"
             onClick={onClick}
           >
             Add to Cart

@@ -2,14 +2,14 @@ import { MdDelete } from "react-icons/md";
 
 export default function CartItem({ product, onClick }) {
   return (
-    <div className="w-11/12 p-3 my-3 rounded hover:cursor-pointer bg-slate-300  flex flex-row justify-between mx-auto">
-      <a className="h-20 flex w-2/4 items-center">
+    <div className="flex flex-row justify-between w-11/12 p-3 my-3 rounded hover:cursor-pointer bg-slate-300 mx-auto">
+      <a className="max-h-20 max-w-36 flex w-2/4 items-center">
         <img
           src={product.images[0]}
           className="object-contain object-center h-full rounded"
         />
 
-        <h1 className="text-gray-900 title-font text-lg font-medium px-2">
+        <h1 className="text-gray-900 text-lg font-medium px-2">
           {product.title}
         </h1>
       </a>
