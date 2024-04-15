@@ -1,9 +1,17 @@
-# React + Vite
+### Todo's
+- [ ] Add product
+- [ ] Delete product
+- [ ] Create admin panel
+- [ ] Create admin panel
+- [ ] Product detail page
+- [ ] Account CRUD
+- [ ] Mobile desing
+- [ ] Cart item quantity
+- [ ] Product result filter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# TailwindFirstEcommerce
+### Completed Todo's ✓
+- [x] React project created via vite and added Tailwindcss 
+- [x] Created Components, Pages and routes
+- [x] Product's fetched from dummyjsonAPI
+- [x] Create Cart Context
+- [x] Added addToCart, deleteFromCart, getCartTotal
