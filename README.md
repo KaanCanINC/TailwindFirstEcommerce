@@ -9,6 +9,7 @@
 - [ ] Mobile desing
 - [ ] Cart item quantity
 - [ ] Product result filter
+- [ ] Add comment line's
 
 ### Completed Todo's ✓
 - [x] React project created via vite and added Tailwindcss 
