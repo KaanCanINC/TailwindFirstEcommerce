@@ -1,13 +1,9 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import CartItemSlider from "../components/CartItemSlider";
-import { CartContext } from "../context/cart";
 
 const HomePage = () => {
-  const { cartItems, deleteFromCart } = useContext(CartContext);
   return (
-    <section>
-      <div className="text-gray-600 container mx-auto flex px-5 py-10 items-center justify-center flex-col">
+    <section className="text-gray-600 container m-auto flex flex-col items-center w-screen">
+      <div className="flex flex-col items-center">
         <img
           className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 rounded"
           alt="hero"
@@ -33,13 +29,7 @@ const HomePage = () => {
         </div>
       </div>
       <div className="flex flex-wrap items-center justify-center">
-        {cartItems?.map((item) => (
-          <CartItemSlider
-            key={item.id}
-            product={item}
-            onClick={() => deleteFromCart(item)}
-          />
-        ))}
+        <h1>Önerilen Ürünler</h1>
       </div>
     </section>
   );

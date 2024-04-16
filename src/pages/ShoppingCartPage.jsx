@@ -1,10 +1,11 @@
 import { useContext } from "react";
 import CartItem from "../components/CartItem";
 import { CartContext } from "../context/cart";
+import { useState } from "react";
 
 export default function ShoppingCartPage() {
-  const { cartItems, deleteFromCart, getCartTotal } = useContext(CartContext);
-
+  const { cartItems, deleteFromCart, getCartTotal, addToCart, clearCart } =
+    useContext(CartContext);
   return (
     <div>
       <div className="flex flex-col sm:ml-60 sm:my-7 items-center sm:items-start">
@@ -14,7 +15,9 @@ export default function ShoppingCartPage() {
             <CartItem
               key={item.id}
               product={item}
-              onClick={() => deleteFromCart(item)}
+              onClickDelete={() => deleteFromCart(item)}
+              quantity={item.quantity}
+              onClickAdd={() => addToCart(item)}
             />
           ))}
         </div>
@@ -23,8 +26,14 @@ export default function ShoppingCartPage() {
         <h1>
           Sepet toplamı: $ <span className="font-bold">{getCartTotal()}</span>
         </h1>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-12 border border-blue-700 rounded">
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-3 border border-blue-700 rounded">
           Alisverisi tamamla
+        </button>
+        <button
+          className="bg-red-500 hover:bg-rose-700 text-white font-bold py-2 border border-red-700 rounded"
+          onClick={() => clearCart()}
+        >
+          Sepeti temizle
         </button>
       </div>
     </div>

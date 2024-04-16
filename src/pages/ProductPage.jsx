@@ -11,11 +11,11 @@ export async function loader() {
 
 function ProductPage() {
   const { productData } = useLoaderData();
-  const { addToCart } = useContext(CartContext);
+  const { cartItems, deleteFromCart, addToCart } = useContext(CartContext);
 
   return (
     <section className="text-gray-600 body-font">
-      <div className="container px-5 py-24 mx-auto">
+      <div className="container px-5 py-11 mx-auto">
         <div className="flex flex-wrap -m-4 justify-center">
           {productData.products.map((product) => (
             <ProductCard

@@ -32,6 +32,6 @@ const router = createHashRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <CartProvider>
-    <RouterProvider router={router} />,
+    <RouterProvider router={router} />
   </CartProvider>,
 );
