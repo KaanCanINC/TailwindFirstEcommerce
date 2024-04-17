@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export const Footer = () => {
   return (
-    <section className="flex flex-row justify-between relative bottom-0 w-full px-8 border-t border-t-slate-400 py-3">
+    <div className="flex flex-row justify-between relative bottom-0 w-full px-8 border-t border-t-slate-400 py-3">
       <ul className="flex flex-row space-x-5 opacity-70">
         <li>
           <Link to={"/"}>Ana Sayfa</Link>
@@ -38,6 +38,6 @@ export const Footer = () => {
           </a>
         </li>
       </ul>
-    </section>
+    </div>
   );
 };

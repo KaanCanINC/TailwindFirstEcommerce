@@ -1,6 +1,10 @@
+import { MdDelete } from "react-icons/md";
+
 export default function ProductCard({
-  product: { images, category, title, price },
+  product: { images, category, title, price, id },
   onClick,
+  onClickDelete,
+  quantity,
 }) {
   return (
     <div
@@ -24,12 +28,30 @@ export default function ProductCard({
         </h1>
         <div className="flex md:flex-row justify-between items-center">
           <p className="font-bold text-xl text-black">${price}</p>
-          <button
-            className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2"
-            onClick={onClick}
-          >
-            Add to Cart
-          </button>
+          {!quantity.find((item) => item.id === id) ? (
+            <button
+              className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2"
+              onClick={onClick}
+            >
+              Add to Cart
+            </button>
+          ) : (
+            <div className="flex flex-row border-gray-300 border py-3 px-5 justify-between flex-1 items-center">
+              <button
+                className="transition ease-in duration-200 hover:text-red-500 cursor-pointer font-bold"
+                onClick={onClickDelete}
+              >
+                -
+              </button>
+              <p>{quantity.map((item) => item.id === id && item.quantity)}</p>
+              <button
+                className="transition ease-in duration-200 hover:text-red-500 cursor-pointer font-bold"
+                onClick={onClick}
+              >
+                +
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

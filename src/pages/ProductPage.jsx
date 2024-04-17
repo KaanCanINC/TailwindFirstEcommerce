@@ -12,7 +12,6 @@ export async function loader() {
 function ProductPage() {
   const { productData } = useLoaderData();
   const { cartItems, deleteFromCart, addToCart } = useContext(CartContext);
-
   return (
     <section className="text-gray-600 body-font">
       <div className="container px-5 py-11 mx-auto">
@@ -22,6 +21,8 @@ function ProductPage() {
               key={product.id}
               product={product}
               onClick={() => addToCart(product)}
+              quantity={cartItems}
+              onClickDelete={() => deleteFromCart(product)}
             />
           ))}
         </div>

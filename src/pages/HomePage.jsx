@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
-    <section className="text-gray-600 container m-auto flex flex-col items-center w-screen">
+    <section className="text-gray-600 container m-auto flex flex-col items-center h-[90vh]">
       <div className="flex flex-col items-center">
         <img
           className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 rounded"
