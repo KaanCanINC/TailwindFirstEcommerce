@@ -5,7 +5,7 @@
 - [ ] Create admin panel
 - [ ] HomePage featured products
 - [ ] Navbar product categories (etc. hepsiburada)
-- [ ] Product detail page
+- [x] Product detail page
 - [ ] Account CRUD
 - [ ] Mobile desing
 - [x] Cart item quantity

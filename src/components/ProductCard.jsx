@@ -1,4 +1,5 @@
 import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function ProductCard({
   product: { images, category, title, price, id },
@@ -12,13 +13,15 @@ export default function ProductCard({
       hover:border-slate-100 md:w-1/4 rounded
     lg:w-1/6"
     >
-      <a className="block relative h-48 rounded overflow-hidden">
-        <img
-          src={images[0]}
-          className="object-contain object-center w-full h-full"
-          alt=""
-        />
-      </a>
+      <Link to={`${id}`}>
+        <a className="block relative h-48 rounded overflow-hidden">
+          <img
+            src={images[0]}
+            className="object-contain object-center w-full h-full"
+            alt=""
+          />
+        </a>
+      </Link>
       <div className="mt-4">
         <h3 className="text-gray-500 text-xs tracking-widest mb-1 uppercase">
           {category}
