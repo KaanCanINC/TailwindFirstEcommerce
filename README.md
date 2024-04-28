@@ -3,7 +3,7 @@
 - [ ] Add product
 - [ ] Delete product
 - [ ] Create admin panel
-- [ ] HomePage featured products
+- [x] HomePage featured products
 - [ ] Navbar product categories (etc. hepsiburada)
 - [x] Product detail page
 - [ ] Account CRUD
