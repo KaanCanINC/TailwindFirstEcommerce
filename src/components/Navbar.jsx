@@ -4,6 +4,9 @@ import { useContext } from "react";
 import { CartContext } from "../context/cart";
 
 export default function Navbar() {
+  {
+    /*CartContext'den sepette yer alan ürünleri alıyoruz*/
+  }
   const { cartItems } = useContext(CartContext);
   return (
     <nav className="flex justify-between px-16 py-3 items-center sticky top-0 bg-white w-full z-10">
@@ -22,6 +25,7 @@ export default function Navbar() {
         </li>
         <li>
           <Link to={"/cart"} className="flex flex-row">
+            {/*Sepette yer alan ürünlerin sayısını yazdırır (ürün adetleri dahil değil)*/}
             {cartItems.length}
             <FaShoppingCart className="size-5" />
           </Link>

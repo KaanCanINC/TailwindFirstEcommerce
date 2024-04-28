@@ -18,6 +18,7 @@ export const Footer = () => {
           <Link to={"/"}>Bize ulasin</Link>
         </li>
       </ul>
+      {/*Sosyal medya linkleri*/}
       <ul className="flex flex-row space-x-5">
         <li>
           <a href="https://github.com/KaanCanINC" target="blank">

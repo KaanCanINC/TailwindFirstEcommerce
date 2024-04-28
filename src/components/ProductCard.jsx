@@ -13,6 +13,7 @@ export default function ProductCard({
       hover:border-slate-100 md:w-1/4 rounded
     lg:w-1/6"
     >
+      {/*Tıklanan ürünün detay sayfasına yönlendirir*/}
       <Link to={`${id}`}>
         <a className="block relative h-48 rounded overflow-hidden">
           <img
@@ -30,6 +31,7 @@ export default function ProductCard({
           {title}
         </h1>
         <div className="flex md:flex-row justify-between items-center">
+          {/*Ürünün sepette olup olmadığını kontrol edip eğer ürün sepette ise ürünün adetini sepete ekle butonu yerine gösteriyor*/}
           <p className="font-bold text-xl text-black">${price}</p>
           {!quantity.find((item) => item.id === id) ? (
             <button
@@ -40,13 +42,16 @@ export default function ProductCard({
             </button>
           ) : (
             <div className="flex flex-row border-gray-300 border py-3 px-5 justify-between flex-1 items-center">
+              {/*Ürün sepette ise ürün adedini eksilt*/}
               <button
                 className="transition ease-in duration-200 hover:text-red-500 cursor-pointer font-bold"
                 onClick={onClickDelete}
               >
                 -
               </button>
+              {/*Ürün sepette ise kaç adet eklendiğini yazdır*/}
               <p>{quantity.map((item) => item.id === id && item.quantity)}</p>
+              {/*Ürün sepette ise ürün adedini arttır*/}
               <button
                 className="transition ease-in duration-200 hover:text-red-500 cursor-pointer font-bold"
                 onClick={onClick}

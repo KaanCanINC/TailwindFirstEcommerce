@@ -1,37 +1,47 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import ProductCard from "../components/ProductCard";
 
 const HomePage = () => {
+  //Önerilen ürünlerin her seferinde değiştirilmesi için state tanımlıyoruz
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    //API'dan verileri alıyoruz
     const fetchProducts = async () => {
       const response = await fetch("https://dummyjson.com/products?limit=100");
       const data = await response.json();
 
+      //API'dan aldığımız verilerin indeks değerlerini içeren bir dizi oluşturuyoruz
       const allProductIndices = [...Array(data.products.length)].map(
         (_, i) => i,
       );
 
-      // Select 5 random indices without duplicates
+      //randomIndices adlı boş bir array oluşturup içerisine rastgele 5 adet birbirinden farklı ürünün indesk değerlerini atayacağız
       const randomIndices = [];
+      {
+        //while loop ile arrayi döngüye alıyoruz
+      }
       while (randomIndices.length < 5) {
+        {
+          //Verilerin indekslerinin yer aldığı arrayin uzunluğu kadar rastgele bir sayı oluşturuyoruz
+        }
         const randomIndex = Math.floor(
-          Math.random() * allProductIndices.length,
+          Math.random() / allProductIndices.length,
         );
+        //Ürünlerin indekslerini atayacağımız arrayin içerisinde aynı indeskin yer alıp almadığını kontrol ediyoruz eğer indesk değeri array içerisinde yer almıyorsa indeks değerini arraye push metodu kullanarak atıyoruz
         if (!randomIndices.includes(randomIndex)) {
           randomIndices.push(randomIndex);
         }
       }
 
-      // Select the corresponding random products
+      //randomIndices içindeki indeks değerlerine denk gelen ürünleri map metodu ile randomProducts değişkenine yeni bir array olarak yazdırıyoruz
       const randomProducts = randomIndices.map((index) => data.products[index]);
       setProducts(randomProducts);
     };
 
-    fetchProducts(); // Call the function within useEffect
-  }, []); // Empty dependency array to fetch only once
+    //useEffect içerisinde fetchProducts fonksiyonunu çağırıyoruz
+    fetchProducts();
+  }, []); // Fonksiyonun sayfa yüklendiğinde bir kez çalıştırılması için arrayi boş bırakıyoruz
   return (
     <section className="text-gray-600 container m-auto flex flex-col items-center h-[90vh]">
       <div className="flex flex-col items-center">
@@ -52,6 +62,7 @@ const HomePage = () => {
             photo booth af fingerstache pitchfork.
           </p>
 
+          {/*Alışveriş sayfasına yönlendir*/}
           <Link to={"/products"}>
             <button className="text-white bg-[#344A5C] py-2 px-6 focus:outline-none hover:bg-[#1d2c38] rounded text-lg">
               Alisverise Basla
@@ -61,6 +72,7 @@ const HomePage = () => {
       </div>
       <div className="flex flex-wrap items-center justify-center">
         <h1>Önerilen Ürünler</h1>
+        {/*useState kullanarak atadığımız rastgele ürünlerin değerlerini map metodu ile html etiketlerinde kullanıyoruz*/}
         {products.map((product, index) => (
           <div
             key={index}
@@ -68,6 +80,7 @@ const HomePage = () => {
       hover:border-slate-100 md:w-1/4 rounded
     lg:w-1/6"
           >
+            {/*Tıklanan ürünün detay sayfasına yönlendirir*/}
             <Link to={`/products/${product.id}`}>
               <a className="block relative h-48 rounded overflow-hidden">
                 <img
