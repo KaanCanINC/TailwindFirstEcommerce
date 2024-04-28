@@ -26,7 +26,7 @@ const HomePage = () => {
           //Verilerin indekslerinin yer aldığı arrayin uzunluğu kadar rastgele bir sayı oluşturuyoruz
         }
         const randomIndex = Math.floor(
-          Math.random() / allProductIndices.length,
+          Math.random() * allProductIndices.length,
         );
         //Ürünlerin indekslerini atayacağımız arrayin içerisinde aynı indeskin yer alıp almadığını kontrol ediyoruz eğer indesk değeri array içerisinde yer almıyorsa indeks değerini arraye push metodu kullanarak atıyoruz
         if (!randomIndices.includes(randomIndex)) {
