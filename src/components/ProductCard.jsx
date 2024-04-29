@@ -9,42 +9,45 @@ export default function ProductCard({
 }) {
   return (
     <div
-      className="w-full border-2 p-3 m-3 hover:cursor-pointer 
-      hover:border-slate-100 md:w-1/4 rounded
+      className="m-3 w-full rounded border-2 p-3 
+      hover:cursor-pointer hover:border-slate-100 md:w-1/4
     lg:w-1/6"
     >
       {/*Tıklanan ürünün detay sayfasına yönlendirir*/}
       <Link to={`${id}`}>
-        <a className="block relative h-48 rounded overflow-hidden">
+        <a className="relative block h-48 overflow-hidden rounded">
           <img
             src={images[0]}
-            className="object-contain object-center w-full h-full"
+            className="h-full w-full object-contain object-center"
             alt=""
           />
         </a>
       </Link>
       <div className="mt-4">
-        <h3 className="text-gray-500 text-xs tracking-widest mb-1 uppercase">
+        <Link
+          to={`/${category}`}
+          className="mb-1 text-xs uppercase tracking-widest  text-sky-900 hover:text-blue-500"
+        >
           {category}
-        </h3>
-        <h1 className="text-gray-900 title-font text-lg font-medium line-clamp-2">
+        </Link>
+        <h1 className="title-font line-clamp-2 text-lg font-medium text-gray-900">
           {title}
         </h1>
-        <div className="flex md:flex-row justify-between items-center">
+        <div className="flex items-center justify-between md:flex-row">
           {/*Ürünün sepette olup olmadığını kontrol edip eğer ürün sepette ise ürünün adetini sepete ekle butonu yerine gösteriyor*/}
-          <p className="font-bold text-xl text-black">${price}</p>
+          <p className="text-xl font-bold text-black">${price}</p>
           {!quantity.find((item) => item.id === id) ? (
             <button
-              className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2"
+              className="me-2 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100"
               onClick={onClick}
             >
               Add to Cart
             </button>
           ) : (
-            <div className="flex flex-row border-gray-300 border py-3 px-5 justify-between flex-1 items-center">
+            <div className="flex flex-1 flex-row items-center justify-between border border-gray-300 px-5 py-3">
               {/*Ürün sepette ise ürün adedini eksilt*/}
               <button
-                className="transition ease-in duration-200 hover:text-red-500 cursor-pointer font-bold"
+                className="cursor-pointer font-bold transition duration-200 ease-in hover:text-red-500"
                 onClick={onClickDelete}
               >
                 -
@@ -53,7 +56,7 @@ export default function ProductCard({
               <p>{quantity.map((item) => item.id === id && item.quantity)}</p>
               {/*Ürün sepette ise ürün adedini arttır*/}
               <button
-                className="transition ease-in duration-200 hover:text-red-500 cursor-pointer font-bold"
+                className="cursor-pointer font-bold transition duration-200 ease-in hover:text-red-500"
                 onClick={onClick}
               >
                 +

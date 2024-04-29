@@ -8,9 +8,9 @@ export default function ShoppingCartPage() {
     useContext(CartContext);
   return (
     <div>
-      <div className="flex flex-col sm:ml-60 sm:my-7 items-center sm:items-start">
-        <h1 className="text-4xl mb-4">Sepetim</h1>
-        <div className="sm:w-4/6 h-[75vh] overflow-y-auto rounded-lg">
+      <div className="flex flex-col items-center sm:my-7 sm:ml-60 sm:items-start">
+        <h1 className="mb-4 text-4xl">Sepetim</h1>
+        <div className="h-[75vh] overflow-y-auto rounded-lg sm:w-4/6">
           {cartItems?.map((item) => (
             <CartItem
               key={item.id}
@@ -22,15 +22,15 @@ export default function ShoppingCartPage() {
           ))}
         </div>
       </div>{" "}
-      <div className=" block sm:flex flex-col sm:absolute sm:top-44 sm:right-28 sm:w-2/12 w-full text-center ">
+      <div className=" block w-full flex-col text-center sm:absolute sm:right-28 sm:top-44 sm:flex sm:w-2/12 ">
         <h1>
           Sepet toplamı: $ <span className="font-bold">{getCartTotal()}</span>
         </h1>
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-3 border border-blue-700 rounded">
+        <button className="mb-3 rounded border border-blue-700 bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">
           Alisverisi tamamla
         </button>
         <button
-          className="bg-red-500 hover:bg-rose-700 text-white font-bold py-2 border border-red-700 rounded"
+          className="rounded border border-red-700 bg-red-500 py-2 font-bold text-white hover:bg-rose-700"
           onClick={() => clearCart()}
         >
           Sepeti temizle

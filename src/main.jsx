@@ -9,6 +9,8 @@ import ShoppingCartPage from "./pages/ShoppingCartPage.jsx";
 import { CartProvider } from "./context/cart.jsx";
 import { ProductDetailPage } from "./pages/ProductDetailPage.jsx";
 import { loader as detailPageLoader } from "./pages/ProductDetailPage.jsx";
+import { ProductsByCategory } from "./pages/ProductsByCategory.jsx";
+import { loader as productCategoryPageLoader } from "./pages/ProductsByCategory.jsx";
 
 const router = createHashRouter([
   {
@@ -32,6 +34,11 @@ const router = createHashRouter([
         path: `/products/:id`,
         element: <ProductDetailPage />,
         loader: detailPageLoader,
+      },
+      {
+        path: `/:category`,
+        element: <ProductsByCategory />,
+        loader: productCategoryPageLoader,
       },
     ],
   },

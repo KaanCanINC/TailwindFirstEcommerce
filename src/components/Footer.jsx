@@ -3,8 +3,8 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export const Footer = () => {
   return (
-    <div className="flex flex-row justify-between relative bottom-0 w-full px-8 border-t border-t-slate-400 py-3">
-      <ul className="flex flex-row space-x-5 opacity-70">
+    <footer className="relative bottom-0 flex w-full flex-row items-center justify-between border-t border-t-slate-400 px-8 py-3">
+      <ul className="flex flex-col space-y-2 opacity-70 sm:flex-row sm:space-x-5 sm:space-y-0">
         <li>
           <Link to={"/"}>Ana Sayfa</Link>
         </li>
@@ -22,7 +22,7 @@ export const Footer = () => {
       <ul className="flex flex-row space-x-5">
         <li>
           <a href="https://github.com/KaanCanINC" target="blank">
-            <FaGithub className="hover:opacity-100 hover:text-black ease-in-out cursor-pointer" />
+            <FaGithub className="cursor-pointer ease-in-out hover:text-black hover:opacity-100" />
           </a>
         </li>
         <li>
@@ -39,6 +39,6 @@ export const Footer = () => {
           </a>
         </li>
       </ul>
-    </div>
+    </footer>
   );
 };

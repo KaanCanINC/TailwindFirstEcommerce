@@ -1,16 +1,17 @@
 ### Todo's
 
+- [x] Mobile desing
+- [ ] Search Bar
+- [x] HomePage featured products
+- [x] Navbar product categories
+- [x] Product detail page
+- [x] Cart item quantity
+- [ ] Product result filter(price, category, rating etc.)
+- [x] Add comment line's
+- [ ] Account CRUD
+- [ ] Create admin panel
 - [ ] Add product
 - [ ] Delete product
-- [ ] Create admin panel
-- [x] HomePage featured products
-- [ ] Navbar product categories (etc. hepsiburada)
-- [x] Product detail page
-- [ ] Account CRUD
-- [ ] Mobile desing
-- [x] Cart item quantity
-- [ ] Product result filter
-- [ ] Add comment line's
 
 ### Completed Todo's ✓
 

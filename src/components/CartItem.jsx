@@ -1,4 +1,5 @@
 import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 export default function CartItem({
   product,
@@ -7,31 +8,34 @@ export default function CartItem({
   onClickAdd,
 }) {
   return (
-    <div className="flex flex-row justify-between w-11/12 p-3 my-3 rounded hover:cursor-pointer bg-slate-300 mx-auto">
-      <a className="max-h-20 max-w-36 flex w-2/4 items-center">
+    <div className="mx-auto my-3 flex w-11/12 flex-row justify-between rounded bg-slate-300 p-3 hover:cursor-pointer">
+      <Link
+        to={`/products/${product.id}`}
+        className="flex max-h-20 w-2/4 max-w-36 items-center"
+      >
         <img
           src={product.images[0]}
-          className="object-contain object-center h-full rounded"
+          className="h-full rounded object-contain object-center"
         />
 
-        <h1 className="text-gray-900 text-lg font-medium px-2">
+        <h1 className="px-2 text-lg font-medium text-gray-900">
           {product.title}
         </h1>
-      </a>
-      <div className="flex justify-evenly items-center px-3">
-        <p className="font-bold text-xl px-3 text-black">
+      </Link>
+      <div className="flex items-center justify-evenly px-3">
+        <p className="px-3 text-xl font-bold text-black">
           ${product.price * quantity}
         </p>
-        <div className="flex flex-row bg-slate-400 p-3 w-full justify-evenly">
+        <div className="flex w-full flex-row justify-evenly bg-slate-400 p-3">
           <button
-            className="transition ease-in duration-200 hover:text-red-500 cursor-pointer"
+            className="cursor-pointer transition duration-200 ease-in hover:text-red-500"
             onClick={onClickDelete}
           >
             <MdDelete />
           </button>
           <p>{quantity}</p>
           <button
-            className="transition ease-in duration-200 hover:text-red-500 cursor-pointer font-bold"
+            className="cursor-pointer font-bold transition duration-200 ease-in hover:text-red-500"
             onClick={onClickAdd}
           >
             +

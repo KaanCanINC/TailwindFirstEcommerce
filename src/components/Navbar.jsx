@@ -1,27 +1,82 @@
 import { Link } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart, FaAngleDown, FaBars } from "react-icons/fa";
 import { useContext } from "react";
 import { CartContext } from "../context/cart";
+import { useState } from "react";
 
 export default function Navbar() {
-  {
-    /*CartContext'den sepette yer alan ürünleri alıyoruz*/
-  }
+  const [isOpen, setIsOpen] = useState(false);
+  // CartContext'den sepette yer alan ürünleri alıyoruz
   const { cartItems } = useContext(CartContext);
   return (
-    <nav className="flex justify-between px-16 py-3 items-center sticky top-0 bg-white w-full z-10">
+    <nav className="sticky top-0 z-10 flex w-screen items-center justify-between  bg-white px-3 py-3 sm:px-16">
       <Link to={"/"}>
         <img
           src="https://i.imgur.com/Gg1BumM.png"
           className="h-11 w-11 object-fill"
         />
-      </Link>{" "}
-      <ul className="flex flex-row items-center">
-        <li className="px-5">
-          <Link to={"/"}>Ana Sayfa</Link>{" "}
+      </Link>
+      <button className="sm:hidden" onClick={() => setIsOpen(!isOpen)}>
+        <FaBars />
+      </button>
+      <ul
+        className={` ${isOpen === false ? "hidden" : "flex"} absolute right-0 top-[4.2rem] h-auto flex-col items-center bg-white shadow sm:static sm:flex sm:h-auto sm:w-auto sm:flex-row sm:p-0 sm:shadow-none`}
+      >
+        <li className="dropdown group relative cursor-pointer px-5 ">
+          <span className="inline-flex items-center">
+            <FaAngleDown />
+            Kategoriler
+          </span>
+          <div className="dropdown-menu absolute hidden h-auto group-hover:block">
+            <ul className="w-48 bg-white px-6 py-8 shadow">
+              <li className="py-1">
+                <Link
+                  to={"/smartphones"}
+                  className="block cursor-pointer text-base font-bold uppercase hover:text-[#1d2c38]"
+                >
+                  SmartPhones
+                </Link>
+              </li>
+              <li className="py-1">
+                <Link
+                  to={"/laptops"}
+                  className="block cursor-pointer text-base font-bold uppercase hover:text-[#1d2c38]"
+                >
+                  Laptops
+                </Link>
+              </li>
+              <li className="py-1">
+                <Link
+                  to={"/groceries"}
+                  className="block cursor-pointer text-base font-bold uppercase hover:text-[#1d2c38]"
+                >
+                  Groceries
+                </Link>
+              </li>
+              <li className="py-1">
+                <Link
+                  to={"/womens-dresses"}
+                  className="block cursor-pointer text-base font-bold uppercase hover:text-[#1d2c38]"
+                >
+                  Womens Dresses
+                </Link>
+              </li>
+              <li className="py-1">
+                <Link
+                  to={"/tops"}
+                  className="block cursor-pointer text-base font-bold uppercase hover:text-[#1d2c38]"
+                >
+                  Tops
+                </Link>
+              </li>
+            </ul>
+          </div>
         </li>
         <li className="px-5">
-          <Link to={"/products"}>Urunlerimiz</Link>{" "}
+          <Link to={"/"}>Ana Sayfa</Link>
+        </li>
+        <li className="px-5">
+          <Link to={"/products"}>Ürünlerimiz</Link>
         </li>
         <li>
           <Link to={"/cart"} className="flex flex-row">

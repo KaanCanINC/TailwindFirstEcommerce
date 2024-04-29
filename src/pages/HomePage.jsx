@@ -43,15 +43,15 @@ const HomePage = () => {
     fetchProducts();
   }, []); // Fonksiyonun sayfa yüklendiğinde bir kez çalıştırılması için arrayi boş bırakıyoruz
   return (
-    <section className="text-gray-600 container m-auto flex flex-col items-center h-[90vh]">
+    <div className="container m-auto flex h-screen flex-col items-center text-gray-600">
       <div className="flex flex-col items-center">
         <img
-          className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 rounded"
+          className="mb-10 w-5/6 rounded md:w-3/6 lg:w-2/6"
           alt="hero"
           src="https://images.unsplash.com/photo-1601132359864-c974e79890ac?q=80&w=720"
         />
-        <div className="text-center lg:w-2/3 w-full">
-          <h1 className="sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+        <div className="w-full text-center lg:w-2/3">
+          <h1 className="mb-4 text-3xl font-medium text-gray-900 sm:text-4xl">
             Microdosing synth tattooed vexillologist
           </h1>
           <p className="mb-8 leading-relaxed">
@@ -64,47 +64,49 @@ const HomePage = () => {
 
           {/*Alışveriş sayfasına yönlendir*/}
           <Link to={"/products"}>
-            <button className="text-white bg-[#344A5C] py-2 px-6 focus:outline-none hover:bg-[#1d2c38] rounded text-lg">
+            <button className="rounded bg-[#344A5C] px-6 py-2 text-lg text-white hover:bg-[#1d2c38] focus:outline-none">
               Alisverise Basla
             </button>
           </Link>
         </div>
       </div>
-      <div className="flex flex-wrap items-center justify-center">
-        <h1>Önerilen Ürünler</h1>
+      <h1>Önerilen Ürünler</h1>
+      <div className="flex-rol flex h-screen w-screen items-center justify-center overflow-y-visible overflow-x-scroll">
         {/*useState kullanarak atadığımız rastgele ürünlerin değerlerini map metodu ile html etiketlerinde kullanıyoruz*/}
         {products.map((product, index) => (
           <div
             key={index}
-            className="w-full border-2 p-3 m-3 hover:cursor-pointer 
-      hover:border-slate-100 md:w-1/4 rounded
-    lg:w-1/6"
+            className="m-3 rounded border-2 p-3 
+      hover:cursor-pointer hover:border-slate-100 "
           >
             {/*Tıklanan ürünün detay sayfasına yönlendirir*/}
-            <Link to={`/products/${product.id}`}>
-              <a className="block relative h-48 rounded overflow-hidden">
+            <Link to={`${product.id}`}>
+              <a className="relative block h-48 overflow-hidden rounded">
                 <img
                   src={product.images[0]}
-                  className="object-contain object-center w-full h-full"
+                  className="h-full w-full object-contain object-center"
                   alt=""
                 />
               </a>
             </Link>
             <div className="mt-4">
-              <h3 className="text-gray-500 text-xs tracking-widest mb-1 uppercase">
+              <Link
+                to={`/${product.category}`}
+                className="mb-1 text-xs uppercase tracking-widest  text-sky-900 hover:text-blue-500"
+              >
                 {product.category}
-              </h3>
-              <h1 className="text-gray-900 title-font text-lg font-medium line-clamp-2">
+              </Link>
+              <h1 className="title-font line-clamp-2 text-lg font-medium text-gray-900">
                 {product.title}
               </h1>
-              <div className="flex md:flex-row justify-between items-center">
-                <p className="font-bold text-xl text-black">${product.price}</p>
+              <div className="flex items-center justify-between md:flex-row">
+                <p className="text-xl font-bold text-black">${product.price}</p>
               </div>
             </div>
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

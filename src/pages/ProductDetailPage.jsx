@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import { CartContext } from "../context/cart";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 
 export async function loader({ params: { id } }) {
   const res = await fetch(`https://dummyjson.com/products/${id}`);
@@ -10,62 +11,70 @@ export async function loader({ params: { id } }) {
 
 export const ProductDetailPage = () => {
   const { addToCart, deleteFromCart, cartItems } = useContext(CartContext);
-  const {
-    productData: { images, category, title, price, description, rating, id },
-    productData,
-  } = useLoaderData();
+  const { productData } = useLoaderData();
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="flex flex-wrap md:flex-row">
-        <div className="w-full md:w-1/2 mb-4 md:mb-0">
-          <div className="product-image-carousel relative">
-            {images.map((item) => (
+        <div className="mb-4 w-full md:mb-0 md:w-1/2">
+          <div className="inline-flex flex-row overflow-scroll sm:relative sm:block sm:overflow-visible">
+            {productData.images.map((item) => (
               <img
                 key={item}
                 src={item}
-                alt={title}
-                className="w-full h-auto object-cover rounded-lg shadow-md"
+                alt={productData.title}
+                className="h-auto w-full rounded-lg object-cover shadow-md"
               />
             ))}
           </div>
         </div>
-        <div className="w-full md:w-1/2 px-4">
-          <h1 className="text-2xl font-semibold mb-4">{title}</h1>
-          <p className="text-gray-700 mb-4">{description}</p>
-          <div className="flex items-center mb-4">
-            <span className="text-gray-700 mr-2">Category:</span>
-            <span className="text-blue-500">{category}</span>
+        <div className="w-full px-4 md:w-1/2">
+          <h1 className="mb-4 text-2xl font-semibold">{productData.title}</h1>
+          <p className="mb-4 text-gray-700">{productData.description}</p>
+          <div className="mb-4 flex items-center">
+            <span className="mr-2 text-gray-700">Category:</span>
+            <Link
+              to={`/${productData.category}`}
+              className="uppercase text-blue-500"
+            >
+              {productData.category}
+            </Link>
           </div>
-          <div className="flex items-center mb-4">
-            <span className="text-gray-700 mr-2">Price:</span>
-            <span className="text-red-500 font-semibold">${price}</span>
+          <div className="mb-4 flex items-center">
+            <span className="mr-2 text-gray-700">Price:</span>
+            <span className="font-semibold text-red-500">
+              ${productData.price}
+            </span>
           </div>
-          <div className="flex items-center mb-4">
-            <span className="text-gray-700 mr-2">Rating:</span>
-            <span className="text-yellow-400">★★★★★ ({rating})</span>
+          <div className="mb-4 flex items-center">
+            <span className="mr-2 text-gray-700">Rating:</span>
+            <span className="text-yellow-400">
+              ★★★★★ ({productData.rating})
+            </span>
           </div>
           <div className="flex space-x-2">
-            {!cartItems.find((item) => item.id === id) ? (
+            {!cartItems.find((item) => item.id === productData.id) ? (
               <button
-                className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-full text-sm px-5 py-2.5 me-2"
+                className="me-2 rounded-full border border-gray-300 bg-white px-5 py-2.5 text-sm font-medium text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100"
                 onClick={() => addToCart(productData)}
               >
                 Add to Cart
               </button>
             ) : (
-              <div className="flex flex-row border-gray-300 border py-3 px-5 justify-between flex-1 items-center">
+              <div className="flex flex-1 flex-row items-center justify-between border border-gray-300 px-5 py-3">
                 <button
-                  className="transition ease-in duration-200 hover:text-red-500 cursor-pointer font-bold"
+                  className="cursor-pointer font-bold transition duration-200 ease-in hover:text-red-500"
                   onClick={() => deleteFromCart(productData)}
                 >
                   -
                 </button>
                 <p>
-                  {cartItems.map((item) => item.id === id && item.quantity)}
+                  {cartItems.map(
+                    (item) => item.id === productData.id && item.quantity,
+                  )}
                 </p>
                 <button
-                  className="transition ease-in duration-200 hover:text-red-500 cursor-pointer font-bold"
+                  className="cursor-pointer font-bold transition duration-200 ease-in hover:text-red-500"
                   onClick={() => addToCart(productData)}
                 >
                   +
