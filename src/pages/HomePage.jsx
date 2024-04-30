@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const HomePage = () => {
-  //Önerilen ürünlerin her seferinde değiştirilmesi için state tanımlıyoruz
+  //Önerilen ürünlerin her seferinde değiştirilmesiiçin state tanımlıyoruz
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -71,7 +71,7 @@ const HomePage = () => {
         </div>
       </div>
       <h1>Önerilen Ürünler</h1>
-      <div className="flex-rol flex h-screen w-screen items-center justify-center overflow-y-visible overflow-x-scroll sm:overflow-hidden">
+      <div className="flex-rol flex  w-screen items-center justify-center overflow-y-visible overflow-x-scroll sm:overflow-hidden">
         {/*useState kullanarak atadığımız rastgele ürünlerin değerlerini map metodu ile html etiketlerinde kullanıyoruz*/}
         {products.map((product, index) => (
           <div

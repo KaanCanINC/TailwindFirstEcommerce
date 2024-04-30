@@ -1,13 +1,38 @@
 import { Link } from "react-router-dom";
-import { FaShoppingCart, FaAngleDown, FaBars, FaTimes } from "react-icons/fa";
+import {
+  FaShoppingCart,
+  FaAngleDown,
+  FaBars,
+  FaTimes,
+  FaSistrix,
+} from "react-icons/fa";
 import { useContext } from "react";
 import { CartContext } from "../context/cart";
 import { useState } from "react";
+import { useEffect } from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [searchIsOpen, setSearchIsOpen] = useState(false);
   // CartContext'den sepette yer alan ürünleri alıyoruz
   const { cartItems } = useContext(CartContext);
+  const [products, setProducts] = useState([]);
+  const [searchKey, setSearchKey] = useState();
+  useEffect(() => {
+    //API'dan verileri alıyoruz
+    const fetchProducts = async () => {
+      const response = await fetch(
+        `https://dummyjson.com/products/search?q=${searchKey}&limit=3`,
+      );
+      const data = await response.json();
+
+      setProducts(data.products);
+      console.log(data.products);
+    };
+
+    //useEffect içerisinde fetchProducts fonksiyonunu çağırıyoruz
+    fetchProducts();
+  }, [searchKey]); // Fonksiyonun sayfa yüklendiğinde bir kez çalıştırılması için arrayi boş bırakıyoruz
   return (
     <nav className="sticky top-0 z-10 flex w-screen items-center justify-between  bg-white px-3 py-3 sm:px-16">
       <Link to={"/"}>
@@ -84,6 +109,42 @@ export default function Navbar() {
             {cartItems.length}
             <FaShoppingCart className="size-5" />
           </Link>
+        </li>
+        <li className="inline-flex items-center px-5">
+          <input
+            type="text"
+            id="searchBox"
+            className={` ${searchIsOpen === false ? "hidden" : "block"} border`}
+            onChange={(e) => setSearchKey(e.target.value)}
+          />
+          <label htmlFor="searchBox">
+            <button
+              onClick={() => {
+                setSearchIsOpen(!searchIsOpen);
+              }}
+            >
+              <FaSistrix className="size-5" />
+            </button>
+          </label>
+          <div
+            className={`${searchKey ? "block" : "hidden"} absolute right-20 top-12 h-auto  border`}
+          >
+            <ul className="w-auto bg-white shadow">
+              {products.map((product) => (
+                <li className="py-1" key={product.id}>
+                  <Link
+                    to={`/products/${product.id}`}
+                    className="cursor-pointer text-base font-bold uppercase hover:text-[#1d2c38]"
+                  >
+                    <div className="inline-flex ">
+                      <img src={product.images[0]} className="w-10" />
+                      <p>{product.title}</p>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </li>
       </ul>
     </nav>
