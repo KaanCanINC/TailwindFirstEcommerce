@@ -71,7 +71,7 @@ const HomePage = () => {
         </div>
       </div>
       <h1>Önerilen Ürünler</h1>
-      <div className="flex-rol flex h-screen w-screen items-center justify-center overflow-y-visible overflow-x-scroll">
+      <div className="flex-rol flex h-screen w-screen items-center justify-center overflow-y-visible overflow-x-scroll sm:overflow-hidden">
         {/*useState kullanarak atadığımız rastgele ürünlerin değerlerini map metodu ile html etiketlerinde kullanıyoruz*/}
         {products.map((product, index) => (
           <div
@@ -80,7 +80,7 @@ const HomePage = () => {
       hover:cursor-pointer hover:border-slate-100 "
           >
             {/*Tıklanan ürünün detay sayfasına yönlendirir*/}
-            <Link to={`${product.id}`}>
+            <Link to={`/products/${product.id}`}>
               <a className="relative block h-48 overflow-hidden rounded">
                 <img
                   src={product.images[0]}

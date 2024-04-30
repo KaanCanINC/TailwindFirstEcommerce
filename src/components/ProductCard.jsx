@@ -14,14 +14,12 @@ export default function ProductCard({
     lg:w-1/6"
     >
       {/*Tıklanan ürünün detay sayfasına yönlendirir*/}
-      <Link to={`${id}`}>
-        <a className="relative block h-48 overflow-hidden rounded">
-          <img
-            src={images[0]}
-            className="h-full w-full object-contain object-center"
-            alt=""
-          />
-        </a>
+      <Link to={`/products/${id}`}>
+        <img
+          src={images[0]}
+          className="relative block h-48 w-full overflow-hidden rounded object-contain object-center"
+          alt=""
+        />
       </Link>
       <div className="mt-4">
         <Link

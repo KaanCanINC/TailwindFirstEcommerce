@@ -6,7 +6,7 @@
 - [x] Navbar product categories
 - [x] Product detail page
 - [x] Cart item quantity
-- [ ] Product result filter(price, category, rating etc.)
+- [x] Product sorter(price, category, rating etc.)
 - [x] Add comment line's
 - [ ] Account CRUD
 - [ ] Create admin panel
