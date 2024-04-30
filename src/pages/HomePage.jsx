@@ -81,13 +81,11 @@ const HomePage = () => {
           >
             {/*Tıklanan ürünün detay sayfasına yönlendirir*/}
             <Link to={`/products/${product.id}`}>
-              <a className="relative block h-48 overflow-hidden rounded">
-                <img
-                  src={product.images[0]}
-                  className="h-full w-full object-contain object-center"
-                  alt=""
-                />
-              </a>
+              <img
+                src={product.images[0]}
+                className="relative block h-48 w-full overflow-hidden rounded object-contain object-center"
+                alt=""
+              />
             </Link>
             <div className="mt-4">
               <Link

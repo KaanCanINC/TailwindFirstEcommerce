@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaShoppingCart, FaAngleDown, FaBars } from "react-icons/fa";
+import { FaShoppingCart, FaAngleDown, FaBars, FaTimes } from "react-icons/fa";
 import { useContext } from "react";
 import { CartContext } from "../context/cart";
 import { useState } from "react";
@@ -17,7 +17,7 @@ export default function Navbar() {
         />
       </Link>
       <button className="sm:hidden" onClick={() => setIsOpen(!isOpen)}>
-        <FaBars />
+        {isOpen === false ? <FaBars /> : <FaTimes />}
       </button>
       <ul
         className={` ${isOpen === false ? "hidden" : "flex"} absolute right-0 top-[4.2rem] h-auto flex-col items-center bg-white shadow sm:static sm:flex sm:h-auto sm:w-auto sm:flex-row sm:p-0 sm:shadow-none`}
