@@ -1,7 +1,7 @@
 ### Todo's
 
 - [x] Mobile desing
-- [ ] Search Bar
+- [x] Search Bar
 - [x] HomePage featured products
 - [x] Navbar product categories
 - [x] Product detail page
