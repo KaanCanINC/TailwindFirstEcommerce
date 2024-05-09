@@ -34,7 +34,7 @@ export default function Navbar() {
     fetchProducts();
   }, [searchKey]); // Fonksiyonun sayfa yüklendiğinde bir kez çalıştırılması için arrayi boş bırakıyoruz
   return (
-    <nav className="sticky top-0 z-10 flex w-screen items-center justify-between  bg-white px-3 py-3 sm:px-16">
+    <nav className="sticky top-0 z-10 flex w-full items-center justify-between  bg-white px-3 py-3 sm:px-16">
       <Link to={"/"}>
         <img
           src="https://i.imgur.com/Gg1BumM.png"

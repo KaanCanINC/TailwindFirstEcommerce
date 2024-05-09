@@ -71,7 +71,7 @@ const HomePage = () => {
         </div>
       </div>
       <h1>Önerilen Ürünler</h1>
-      <div className="flex-rol flex  w-screen items-center justify-center overflow-y-visible overflow-x-scroll sm:overflow-hidden">
+      <div className="flex-rol flex  w-full items-center justify-center overflow-y-visible overflow-x-scroll sm:overflow-hidden">
         {/*useState kullanarak atadığımız rastgele ürünlerin değerlerini map metodu ile html etiketlerinde kullanıyoruz*/}
         {products.map((product, index) => (
           <div
